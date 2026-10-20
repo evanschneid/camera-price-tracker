@@ -4,7 +4,7 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from pathlib import Path
 
-from . import notify
+from . import notify, site
 from .alerts import Alert, find_alerts
 from .config import Config, Source
 from .fetch import FetchError, fetch, polite_pause
@@ -30,7 +30,8 @@ def check_source(source: Source) -> PriceResult:
     return result
 
 
-def run(config: Config, data_dir: str | Path = "data", dry_run: bool = False) -> int:
+def run(config: Config, data_dir: str | Path = "data", dry_run: bool = False,
+        site_dir: str | Path | None = None) -> int:
     history = History(data_dir)
     status = history.load_status()
     now = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
@@ -107,6 +108,8 @@ def run(config: Config, data_dir: str | Path = "data", dry_run: bool = False) ->
     history.append(new_rows)
     history.save_status(status)
     Path(data_dir, "latest.md").write_text("\n".join(report) + "\n")
+    if site_dir is not None:
+        site.write_site(history.rows, config, site_dir)
 
     if alerts or newly_broken:
         subject, text, body = (notify.format_alerts(alerts, config.currency, best_now)

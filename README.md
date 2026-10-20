@@ -8,6 +8,9 @@ something drops. Runs free on GitHub Actions — no server, no paid APIs.
 - **Alerts:** email on a drop of 3%+ or when a camera first hits my target price
 - **History:** every price is saved to [`data/prices.csv`](data/prices.csv);
   the latest snapshot is in [`data/latest.md`](data/latest.md)
+- **Web page:** [`docs/index.html`](docs/index.html) lists every camera that
+  dropped, with the old price struck through, the new price, and a link to the
+  shop (see [Price drop page](#4-optional-price-drop-page))
 
 ## How it works
 
@@ -18,6 +21,7 @@ GitHub Actions (~9am + 9pm US Eastern; 8am/8pm in winter)
         ├─ fetches each product page / eBay search
         ├─ extracts the price (schema.org data → meta tags → markup)
         ├─ compares with data/prices.csv → emails on drops
+        ├─ rebuilds the price drop page (docs/index.html)
         └─ commits the new prices back to the repo
 ```
 
@@ -27,6 +31,7 @@ GitHub Actions (~9am + 9pm US Eastern; 8am/8pm in winter)
 | `tracker/sources/product_page.py` | Reads the price from any product page |
 | `tracker/sources/ebay.py` | Lowest matching eBay listing, filtered by title |
 | `tracker/alerts.py` | Decides what's worth an email |
+| `tracker/site.py` | Builds the price drop web page |
 | `tracker/run.py` | One full check of everything |
 | `.github/workflows/check-prices.yml` | The twice-daily schedule |
 
@@ -62,6 +67,17 @@ run only records prices; alerts start from the second run.
 
 That's it — it now runs on its own twice a day.
 
+### 4. (Optional) Price drop page
+
+Each run writes `docs/index.html`: a page of every camera whose price is at
+least `alert_drop_percent` below its 30-day high at that shop, showing the old
+price struck through, the new price, and a link to the listing. To put it
+online for free: **Settings → Pages → Build and deployment → Deploy from a
+branch → `main` / `/docs` → Save.** It will be at
+`https://<your-username>.github.io/camera-price-tracker/`.
+
+To look at it without GitHub Pages, open `docs/index.html` in a browser.
+
 ## Running locally
 
 ```bash
@@ -69,6 +85,7 @@ pip install -r requirements.txt
 python -m tracker check https://www.mpb.com/en-us/product/fujifilm-x-t5   # test one URL
 python -m tracker check "ebay:fujifilm x-t5 body"                          # test an eBay search
 python -m tracker run --dry-run                                            # check all, change nothing
+python -m tracker site                                                     # rebuild docs/index.html only
 python -m unittest discover tests                                          # run the tests
 ```
 
@@ -93,7 +110,7 @@ then `python -m tracker test-email`.
 
 ## Ideas for later
 
-- A price history chart page on GitHub Pages
+- Price history charts on the price drop page
 - Phone push notifications via [ntfy.sh](https://ntfy.sh)
 - More shops with their own parsers (Best Buy, Amazon via Keepa API)
 - A weekly digest email even when nothing dropped

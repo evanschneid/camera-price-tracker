@@ -6,6 +6,7 @@ from pathlib import Path
 from unittest import mock
 
 from tracker import run as run_mod
+from tracker import site
 from tracker.alerts import find_alerts
 from tracker.config import Camera, Config, Source
 from tracker.history import History
@@ -152,6 +153,48 @@ class Alerts(unittest.TestCase):
         self.assertTrue(a.lowest_ever)
 
 
+def price_row(when, source, price, camera="Cam", url=""):
+    return {"checked_at": when, "camera": camera, "source": source, "price": price,
+            "currency": "USD", "in_stock": True, "listing_url": url}
+
+
+class Site(unittest.TestCase):
+    def setUp(self):
+        self.config = Config(alert_drop_percent=3, cameras=[Camera(
+            name="Cam", target_price=900,
+            sources=[Source(label="A", url="https://a.example/cam"),
+                     Source(label="B", url="https://b.example/cam"),
+                     Source(label="Gone", url="https://gone.example/cam")])])
+
+    def test_drops_against_recent_high(self):
+        rows = [
+            price_row("2026-08-01T13:00:00+00:00", "A", 1500),   # older than 30 days: ignored
+            price_row("2026-10-01T13:00:00+00:00", "A", 1000),
+            price_row("2026-10-10T13:00:00+00:00", "A", 1100),
+            price_row("2026-10-01T13:00:00+00:00", "B", 1000),
+            price_row("2026-10-01T13:00:00+00:00", "Gone", 2000),
+            price_row("2026-10-20T13:00:00+00:00", "A", 880, url="https://a.example/listing"),
+            price_row("2026-10-20T13:00:00+00:00", "B", 990),    # only 1% down: not a drop
+        ]
+        drops, current, latest = site.analyze(rows, self.config)
+        self.assertEqual(latest, "2026-10-20T13:00:00+00:00")
+        self.assertEqual([(d.source, d.was, d.now) for d in drops], [("A", 1100, 880)])
+        self.assertEqual(round(drops[0].percent_off), 20)
+        self.assertEqual(drops[0].url, "https://a.example/listing")
+        self.assertTrue(drops[0].lowest_ever)
+        self.assertEqual([c.source for c in current], ["A", "B"])  # "Gone" is stale
+
+    def test_render(self):
+        rows = [price_row("2026-10-01T13:00:00+00:00", "A", 1100),
+                price_row("2026-10-20T13:00:00+00:00", "A", 880)]
+        page = site.render(rows, self.config)
+        self.assertIn("<s class=\"was\" aria-label=\"was\">$1,100.00</s>", page)
+        self.assertIn("$880.00", page)
+        self.assertIn('href="https://a.example/cam"', page)
+        self.assertIn("At or below target", page)
+        self.assertIn("No prices recorded yet", site.render([], self.config))
+
+
 class FullRun(unittest.TestCase):
     def setUp(self):
         self.tmp = Path(tempfile.mkdtemp())
@@ -190,8 +233,17 @@ class FullRun(unittest.TestCase):
         self.assertIn("stopped working", self.send.call_args[0][0])
 
     def test_dry_run_writes_nothing(self):
-        run_mod.run(self.config, self.tmp, dry_run=True)
+        run_mod.run(self.config, self.tmp, dry_run=True, site_dir=self.tmp / "docs")
         self.assertFalse((self.tmp / "prices.csv").exists())
+        self.assertFalse((self.tmp / "docs").exists())
+
+    def test_run_writes_site(self):
+        run_mod.run(self.config, self.tmp, site_dir=self.tmp / "docs")
+        self.prices["https://shop.example/a7iv"] = 1950
+        run_mod.run(self.config, self.tmp, site_dir=self.tmp / "docs")
+        page = (self.tmp / "docs" / "index.html").read_text(encoding="utf-8")
+        self.assertIn("$2,200.00</s>", page)
+        self.assertIn("$1,950.00", page)
 
     def test_real_config_loads(self):
         from tracker.config import load_config

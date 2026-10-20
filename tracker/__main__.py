@@ -3,6 +3,7 @@
   python -m tracker run            check everything, save, email on drops
   python -m tracker run --dry-run  check everything, change nothing
   python -m tracker check <url>    test one product page or eBay query
+  python -m tracker site           rebuild docs/index.html from saved prices
   python -m tracker test-email     send a test email
 """
 from __future__ import annotations
@@ -22,6 +23,11 @@ def main(argv: list[str] | None = None) -> int:
     p_run = sub.add_parser("run", help="check all prices")
     p_run.add_argument("--dry-run", action="store_true")
     p_run.add_argument("--data", default="data")
+    p_run.add_argument("--site", default="docs", help="where to write the price drop page")
+
+    p_site = sub.add_parser("site", help="rebuild the price drop page without checking prices")
+    p_site.add_argument("--data", default="data")
+    p_site.add_argument("--site", default="docs")
 
     p_check = sub.add_parser("check", help="test a single URL or eBay search")
     p_check.add_argument("target", help="product URL, or an eBay search like 'ebay:sony a7 iv'")
@@ -31,7 +37,15 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     if args.cmd == "run":
-        return run(load_config(args.config), data_dir=args.data, dry_run=args.dry_run)
+        return run(load_config(args.config), data_dir=args.data, dry_run=args.dry_run,
+                   site_dir=args.site)
+
+    if args.cmd == "site":
+        from .history import History
+        from .site import write_site
+        path = write_site(History(args.data).rows, load_config(args.config), args.site)
+        print(f"wrote {path}")
+        return 0
 
     if args.cmd == "check":
         if args.target.startswith("ebay:"):
