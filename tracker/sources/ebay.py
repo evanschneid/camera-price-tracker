@@ -10,7 +10,7 @@ from urllib.parse import urlencode
 
 from bs4 import BeautifulSoup
 
-from . import PriceResult, SourceError, parse_price
+from . import OutOfStock, PriceResult, SourceError, parse_price
 
 _CONDITION_CODES = {"new": "1000", "used": "3000"}
 
@@ -33,11 +33,25 @@ def normalize(text: str) -> str:
     return re.sub(r"[^a-z0-9]", "", text.lower())
 
 
-def title_matches(title: str, has_any: list[str], exclude: list[str]) -> bool:
-    t = normalize(title)
-    if has_any and not any(normalize(k) in t for k in has_any):
+def _contains(title: str, keyword: str) -> bool:
+    """True if title contains keyword, ignoring case, spaces and punctuation.
+
+    A keyword ending in a number must not run into more digits, so "om-1"
+    doesn't match "OM-10" and "leica m2" doesn't match "Leica M 28mm".
+    """
+    chars = normalize(keyword)
+    if not chars:
         return False
-    return not any(normalize(k) in t for k in exclude)
+    pattern = r"[^a-z0-9]*".join(map(re.escape, chars))
+    if chars[-1].isdigit():
+        pattern += r"(?![0-9])"
+    return re.search(pattern, title.lower()) is not None
+
+
+def title_matches(title: str, has_any: list[str], exclude: list[str]) -> bool:
+    if has_any and not any(_contains(title, k) for k in has_any):
+        return False
+    return not any(_contains(title, k) for k in exclude)
 
 
 def extract_lowest(html: str, has_any: list[str], exclude: list[str],
@@ -49,7 +63,8 @@ def extract_lowest(html: str, has_any: list[str], exclude: list[str],
     matches = [l for l in listings
                if l["price"] >= min_price and title_matches(l["title"], has_any, exclude)]
     if not matches:
-        raise SourceError(f"{len(listings)} listings, none matched the title filters")
+        # Rare cameras can have no matching listing for a while; that's not broken.
+        raise OutOfStock(f"nothing matching listed right now ({len(listings)} listings checked)")
     best = min(matches, key=lambda l: l["total"])
     return PriceResult(price=round(best["total"], 2), currency="USD", in_stock=True,
                        title=best["title"], method=f"ebay ({len(matches)} matches)",

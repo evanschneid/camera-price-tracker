@@ -19,6 +19,10 @@ class SourceError(RuntimeError):
     pass
 
 
+class OutOfStock(SourceError):
+    """Source works fine; the item just isn't available right now. Not a failure."""
+
+
 _NUM = re.compile(r"\d[\d.,\s]*")
 
 

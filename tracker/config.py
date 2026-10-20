@@ -12,6 +12,8 @@ class Source:
     label: str
     url: str | None = None
     ebay_query: str | None = None
+    shop: str | None = None         # Shopify shop domain, e.g. kmcamera.com
+    query: str | None = None        # what to search for at the shop
     condition: str = "any"
     title_has_any: list[str] = field(default_factory=list)
     exclude: list[str] = field(default_factory=list)
@@ -19,7 +21,9 @@ class Source:
 
     @property
     def kind(self) -> str:
-        return "ebay" if self.ebay_query else "page"
+        if self.ebay_query:
+            return "ebay"
+        return "shopify" if self.shop else "page"
 
 
 @dataclass
@@ -40,9 +44,14 @@ class ConfigError(ValueError):
     pass
 
 
+def _words(value) -> list[str]:
+    return list(value or [])
+
+
 def load_config(path: str | Path = "cameras.yaml") -> Config:
-    raw = yaml.safe_load(Path(path).read_text()) or {}
+    raw = yaml.safe_load(Path(path).read_text(encoding="utf-8")) or {}
     settings = raw.get("settings") or {}
+    shared_exclude = _words(settings.get("exclude"))
     cameras = []
     for i, cam in enumerate(raw.get("cameras") or []):
         name = cam.get("name")
@@ -51,19 +60,24 @@ def load_config(path: str | Path = "cameras.yaml") -> Config:
         sources = []
         for j, src in enumerate(cam.get("sources") or []):
             label = src.get("label") or f"source {j + 1}"
-            if bool(src.get("url")) == bool(src.get("ebay_query")):
-                raise ConfigError(f"{name} / {label}: give exactly one of url or ebay_query")
+            if sum(bool(src.get(k)) for k in ("url", "ebay_query", "shop")) != 1:
+                raise ConfigError(f"{name} / {label}: give exactly one of url, ebay_query or shop")
             condition = str(src.get("condition", "any")).lower()
             if condition not in ("new", "used", "any"):
                 raise ConfigError(f"{name} / {label}: condition must be new, used or any")
+            # Search filters can be set once on the camera; a source can override
+            # them, and exclude words add up (settings + camera + source).
+            min_price = src.get("min_price", cam.get("min_price"))
             sources.append(Source(
                 label=label,
                 url=src.get("url"),
                 ebay_query=src.get("ebay_query"),
+                shop=src.get("shop"),
+                query=src.get("query") or cam.get("search") or name,
                 condition=condition,
-                title_has_any=list(src.get("title_has_any") or []),
-                exclude=list(src.get("exclude") or []),
-                min_price=float(src.get("min_price") or 0),
+                title_has_any=_words(src.get("title_has_any") or cam.get("title_has_any")),
+                exclude=shared_exclude + _words(cam.get("exclude")) + _words(src.get("exclude")),
+                min_price=float(min_price or 0),
             ))
         if not sources:
             raise ConfigError(f"{name} has no sources")
