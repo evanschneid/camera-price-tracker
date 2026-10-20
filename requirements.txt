@@ -3,4 +3,4 @@ beautifulsoup4>=4.12
 pyyaml>=6.0
 # Impersonates Chrome's network fingerprint so fewer shops block the tracker.
 # Optional: the tracker falls back to plain requests without it.
-curl_cffi>=0.7
+curl_cffi>=0.8

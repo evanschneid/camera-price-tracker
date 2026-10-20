@@ -3,7 +3,7 @@
 Checks camera prices at new and used retailers twice a day and emails me when
 something drops. Runs free on GitHub Actions — no server, no paid APIs.
 
-- **New:** B&H, Adorama, and any shop with standard product markup
+- **New:** B&H and any shop with standard product markup
 - **Used:** MPB, KEH, and eBay Buy It Now (lowest price + shipping)
 - **Alerts:** email on a drop of 3%+ or when a camera first hits my target price
 - **History:** every price is saved to [`data/prices.csv`](data/prices.csv);
@@ -96,8 +96,11 @@ then `python -m tracker test-email`.
 
 - **Cost:** $0. Public repos get unlimited free Actions minutes; each run
   takes about a minute.
-- **Some shops block bots.** Amazon and Best Buy usually do. If a source shows
-  ✗ HTTP 403 for a few runs, swap it for another shop. You get one email if a
+- **Some shops block bots.** Amazon, Best Buy and Adorama usually do. On an
+  HTTP 403 the tracker retries as a few different browsers before giving up.
+  If a source still shows ✗ HTTP 403 for a few runs, swap it for another shop.
+  GitHub's servers get blocked more often than a home connection, so a URL
+  that works with `python -m tracker check` locally may still fail in Actions. You get one email if a
   source fails for 3 days straight. For Amazon, a free tool like
   CamelCamelCamel or Keepa does this job better.
 - **eBay prices are noisy** because listings come and go. The 3% threshold and

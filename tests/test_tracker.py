@@ -5,6 +5,7 @@ import unittest
 from pathlib import Path
 from unittest import mock
 
+from tracker import fetch as fetch_mod
 from tracker import run as run_mod
 from tracker import site
 from tracker.alerts import find_alerts
@@ -151,6 +152,42 @@ class Alerts(unittest.TestCase):
     def test_lowest_ever_flag(self):
         a = find_alerts("c", "s", 900, 1000, None, 3, None, previous_lowest=950)[0]
         self.assertTrue(a.lowest_ever)
+
+
+class Fetch(unittest.TestCase):
+    def setUp(self):
+        self.attempts = [{"impersonate": "a"}, {"impersonate": "b"}, {"impersonate": "c"}]
+        mock.patch.object(fetch_mod, "_ATTEMPTS", self.attempts).start()
+        mock.patch.object(fetch_mod.time, "sleep").start()
+        self.get = mock.patch.object(fetch_mod._http, "get").start()
+        self.addCleanup(mock.patch.stopall)
+
+    def answers(self, *statuses):
+        self.get.side_effect = [mock.Mock(status_code=s, text=f"page {s}") for s in statuses]
+
+    def profiles_tried(self):
+        return [c.kwargs["impersonate"] for c in self.get.call_args_list]
+
+    def test_403_tries_next_browser(self):
+        self.answers(403, 403, 200)
+        self.assertEqual(fetch_mod.fetch("https://x"), "page 200")
+        self.assertEqual(self.profiles_tried(), ["a", "b", "c"])
+
+    def test_404_gives_up_at_once(self):
+        self.answers(404)
+        with self.assertRaisesRegex(fetch_mod.FetchError, "HTTP 404"):
+            fetch_mod.fetch("https://x")
+        self.assertEqual(self.profiles_tried(), ["a"])
+
+    def test_all_browsers_blocked(self):
+        self.answers(403, 403, 403)
+        with self.assertRaisesRegex(fetch_mod.FetchError, "HTTP 403"):
+            fetch_mod.fetch("https://x")
+
+    def test_server_error_retries_same_browser(self):
+        self.answers(503, 200)
+        self.assertEqual(fetch_mod.fetch("https://x"), "page 200")
+        self.assertEqual(self.profiles_tried(), ["a", "a"])
 
 
 def price_row(when, source, price, camera="Cam", url=""):

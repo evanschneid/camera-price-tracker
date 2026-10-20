@@ -34,12 +34,6 @@ cameras:
     sources:
       - label: B&H
         url: https://www.bhphotovideo.com/c/product/1667800-REG/sony_ilce7m4_b_alpha_a7_iv_mirrorless.html
-      - label: Adorama
-        url: https://www.adorama.com/isoa7m4.html
-      - label: MPB (used)
-        url: https://www.mpb.com/en-us/product/sony-a7-iv
-      - label: KEH (used)
-        url: https://www.keh.com/shop/sony-alpha-a7-iv-mirrorless-camera-body-black.html
       - label: eBay used
         ebay_query: "sony a7 iv body"
         condition: used
@@ -50,10 +44,6 @@ cameras:
   - name: Fujifilm X-T5 (body)
     target_price: 1400
     sources:
-      - label: B&H
-        url: https://www.bhphotovideo.com/c/product/1730534-REG/fujifilm_16782301_x_t5_mirrorless_camera_body.html
-      - label: MPB (used)
-        url: https://www.mpb.com/en-us/product/fujifilm-x-t5
       - label: eBay used
         ebay_query: "fujifilm x-t5 body"
         condition: used
