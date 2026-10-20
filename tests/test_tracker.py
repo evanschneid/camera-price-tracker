@@ -11,7 +11,7 @@ from tracker import site
 from tracker.alerts import find_alerts
 from tracker.config import Camera, Config, Source
 from tracker.history import History
-from tracker.sources import SourceError, ebay, parse_price
+from tracker.sources import OutOfStock, SourceError, ebay, parse_price, shopify
 from tracker.sources.product_page import extract_price
 
 
@@ -115,6 +115,16 @@ class Ebay(unittest.TestCase):
         self.assertTrue(ebay.title_matches("Fujifilm XT5 body", ["x-t5"], []))
         self.assertFalse(ebay.title_matches("Fujifilm X-T50", ["x-t5"], ["x-t50"]))
 
+    def test_number_must_not_run_into_more_digits(self):
+        m = ebay.title_matches
+        self.assertFalse(m("Used Olympus OM-10 | U8", ["om-1"], []))
+        self.assertFalse(m("Leica Summicron-M 28mm f/2 | Leica M, 2023 Version", ["leica m2"], []))
+        self.assertFalse(m("Leica M 35mm f/1.4 lens", ["leica m3"], []))
+        self.assertTrue(m("Olympus OM-1n with 50mm f1.8", ["om-1"], []))
+        self.assertTrue(m("Olympus OM1 50mm f1.8", ["om-1"], []))
+        self.assertTrue(m("Pentax K1000 50mm kit", ["k1000"], []))
+        self.assertTrue(m("Leica M2 + Summaron 35mm", ["leica m2"], []))
+
     def test_classic_layout_lowest_total(self):
         r = ebay.extract_lowest(EBAY_CLASSIC, ["a7 iv", "a7iv", "ilce-7m4"],
                                 ["battery", "grip", "a7 iii"], min_price=1000)
@@ -127,14 +137,77 @@ class Ebay(unittest.TestCase):
         self.assertEqual(r.price, 1314.0)
         self.assertEqual(r.url, "https://www.ebay.com/itm/9")
 
-    def test_nothing_matches(self):
-        with self.assertRaises(SourceError):
+    def test_nothing_matches_is_not_a_failure(self):
+        with self.assertRaises(OutOfStock):
             ebay.extract_lowest(EBAY_CLASSIC, ["nikon z8"], [])
 
     def test_search_url(self):
         url = ebay.search_url("sony a7 iv", "used")
         self.assertIn("LH_ItemCondition=3000", url)
         self.assertIn("LH_BIN=1", url)
+
+
+def shop_json(*products):
+    return json.dumps({"resources": {"results": {"products": [
+        {"title": t, "price": p, "available": a, "url": f"/products/{i}?_pos=1&_psq=x"}
+        for i, (t, p, a) in enumerate(products)]}}})
+
+
+class Shopify(unittest.TestCase):
+    def test_lowest_matching_in_stock(self):
+        text = shop_json(("Used Olympus OM-1 | Chrome | U9", "189.99", True),
+                         ("Olympus OM SYSTEM OM-1 Mirrorless Camera", "2799.99", True),
+                         ("Used Olympus OM-10 | U8", "99.99", True),
+                         ("Used Olympus OM-1 | Black | U8", "149.99", False),
+                         ("Used Olympus OM-1n | Black | U8", "209.99", True))
+        r = shopify.extract_lowest(text, "kmcamera.com", ["om-1"], ["om-10", "om system"], 60)
+        self.assertEqual(r.price, 189.99)
+        self.assertEqual(r.url, "https://kmcamera.com/products/0")
+        self.assertEqual(r.method, "shopify (2 matches)")
+
+    def test_nothing_listed_is_not_a_failure(self):
+        with self.assertRaises(OutOfStock):
+            shopify.extract_lowest(shop_json(("Pentax MX", "199", True)), "x.com", ["k1000"], [])
+
+    def test_not_shopify(self):
+        with self.assertRaises(SourceError):
+            shopify.extract_lowest("<html>Access denied</html>", "x.com", [], [])
+
+    def test_search_url(self):
+        url = shopify.search_url("https://www.kmcamera.com/", "pentax k1000")
+        self.assertTrue(url.startswith("https://www.kmcamera.com/search/suggest.json?q=pentax+k1000"))
+        self.assertIn("unavailable_products%5D=hide", url)
+
+
+class LoadConfig(unittest.TestCase):
+    def test_camera_filters_shared_by_sources(self):
+        path = Path(tempfile.mkdtemp()) / "cameras.yaml"
+        path.write_text("""
+settings: {exclude: [parts]}
+cameras:
+  - name: Pentax K1000
+    search: pentax k1000
+    title_has_any: [k1000]
+    exclude: [for pentax]
+    min_price: 40
+    sources:
+      - {label: eBay, ebay_query: pentax k1000 body, condition: used}
+      - {label: Shop, shop: kmcamera.com, exclude: [kit], min_price: 90}
+""")
+        from tracker.config import load_config
+        ebay_src, shop_src = load_config(path).cameras[0].sources
+        self.assertEqual((ebay_src.kind, ebay_src.exclude, ebay_src.min_price),
+                         ("ebay", ["parts", "for pentax"], 40))
+        self.assertEqual((shop_src.kind, shop_src.query, shop_src.title_has_any),
+                         ("shopify", "pentax k1000", ["k1000"]))
+        self.assertEqual((shop_src.exclude, shop_src.min_price), (["parts", "for pentax", "kit"], 90))
+
+    def test_one_kind_per_source(self):
+        path = Path(tempfile.mkdtemp()) / "cameras.yaml"
+        path.write_text("cameras: [{name: X, sources: [{shop: a.com, url: https://a.com/x}]}]")
+        from tracker.config import ConfigError, load_config
+        with self.assertRaises(ConfigError):
+            load_config(path)
 
 
 class Alerts(unittest.TestCase):

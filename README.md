@@ -1,10 +1,11 @@
 # 📷 Camera Price Tracker
 
-Checks camera prices at new and used retailers twice a day and emails me when
-something drops. Runs free on GitHub Actions — no server, no paid APIs.
+Checks used film camera prices twice a day and emails me when something
+drops. Runs free on GitHub Actions — no server, no paid APIs.
 
-- **New:** B&H and any shop with standard product markup
-- **Used:** MPB, KEH, and eBay Buy It Now (lowest price + shipping)
+- **Used:** eBay Buy It Now (lowest price + shipping), and the cheapest
+  in-stock listing at Shopify shops like K&M Camera and Brooklyn Film Camera
+- **Product pages:** B&H and any shop with standard product markup
 - **Alerts:** email on a drop of 3%+ or when a camera first hits my target price
 - **History:** every price is saved to [`data/prices.csv`](data/prices.csv);
   the latest snapshot is in [`data/latest.md`](data/latest.md)
@@ -18,7 +19,7 @@ something drops. Runs free on GitHub Actions — no server, no paid APIs.
 GitHub Actions (~9am + 9pm US Eastern; 8am/8pm in winter)
    └─ python -m tracker run
         ├─ reads cameras.yaml
-        ├─ fetches each product page / eBay search
+        ├─ fetches each eBay search / shop search / product page
         ├─ extracts the price (schema.org data → meta tags → markup)
         ├─ compares with data/prices.csv → emails on drops
         ├─ rebuilds the price drop page (docs/index.html)
@@ -30,6 +31,7 @@ GitHub Actions (~9am + 9pm US Eastern; 8am/8pm in winter)
 | `cameras.yaml` | **The only file you normally edit.** Cameras, target prices, sources |
 | `tracker/sources/product_page.py` | Reads the price from any product page |
 | `tracker/sources/ebay.py` | Lowest matching eBay listing, filtered by title |
+| `tracker/sources/shopify.py` | Lowest matching listing at a Shopify shop |
 | `tracker/alerts.py` | Decides what's worth an email |
 | `tracker/site.py` | Builds the price drop web page |
 | `tracker/run.py` | One full check of everything |
@@ -55,9 +57,11 @@ Secrets stay private even though the repo is public.
 
 ### 2. Add your cameras
 
-Edit `cameras.yaml`. For each camera, find its page on each shop and paste the
-URL. For eBay, write a search plus title filters so accessories and other
-models don't count.
+Edit `cameras.yaml`. For each camera, give a search plus title filters
+(`title_has_any`, `exclude`, `min_price`) so accessories, broken items and
+other models don't count, then list where to look: an eBay search, a Shopify
+shop's domain, or a fixed product page URL. The comments at the top of the
+file show each kind.
 
 ### 3. Run it once by hand
 
@@ -84,6 +88,7 @@ To look at it without GitHub Pages, open `docs/index.html` in a browser.
 pip install -r requirements.txt
 python -m tracker check https://www.mpb.com/en-us/product/fujifilm-x-t5   # test one URL
 python -m tracker check "ebay:fujifilm x-t5 body"                          # test an eBay search
+python -m tracker check "shop:kmcamera.com pentax k1000"                   # test a shop search
 python -m tracker run --dry-run                                            # check all, change nothing
 python -m tracker site                                                     # rebuild docs/index.html only
 python -m unittest discover tests                                          # run the tests
@@ -105,7 +110,10 @@ then `python -m tracker test-email`.
   CamelCamelCamel or Keepa does this job better.
 - **eBay prices are noisy** because listings come and go. The 3% threshold and
   title filters keep false alarms down; tune `min_price` and `exclude` if needed.
-- **Out of stock** pages are skipped, not counted as broken.
+- **Out of stock** pages, and searches with nothing matching listed right now,
+  are skipped, not counted as broken. Used shops sell one-off items, so a
+  camera often isn't in stock everywhere.
+- **Shop prices don't include shipping**; eBay prices do.
 - **Public repo = public price history.** Your camera list and prices are
   visible; your email settings are not.
 - GitHub pauses scheduled workflows after 60 days without commits. The tracker

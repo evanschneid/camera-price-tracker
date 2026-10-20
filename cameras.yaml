@@ -1,52 +1,159 @@
 # Cameras to track. Edit this file to add, remove, or change cameras.
 #
 # Each camera has:
-#   name          - anything you like; used in emails and the price history
-#   target_price  - optional; you get an email when any source first hits it
-#   sources       - where to check. Two kinds:
+#   name           - anything you like; used in emails and on the web page
+#   target_price   - optional; you get an email when any source first hits it
+#   search         - what to search for at shops (defaults to the name)
+#   title_has_any  - a listing's title must contain at least one of these
+#   exclude        - a listing's title must contain none of these
+#                    (added to the shared list under settings)
+#   min_price      - ignore anything cheaper (accessories, parts, scams)
+#   sources        - where to check. Three kinds:
 #
-#     Product page (B&H, Adorama, Best Buy, MPB, KEH, most shops):
+#     eBay search (lowest Buy It Now price + shipping among matching listings):
+#       - {label: eBay (used), ebay_query: "pentax k1000", condition: used}
+#
+#     Shopify shop search (lowest in-stock matching listing; K&M Camera,
+#     Brooklyn Film Camera, and many other small shops):
+#       - {label: K&M Camera, shop: kmcamera.com}
+#
+#     Product page (one fixed page for one model; B&H, MPB, most shops):
 #       - label: B&H
 #         url: https://www.bhphotovideo.com/c/product/...
 #
-#     eBay search (lowest Buy It Now price among matching listings):
-#       - label: eBay used
-#         ebay_query: "sony a7 iv body"
-#         condition: used          # new | used | any
-#         title_has_any: ["a7 iv"] # title must contain at least one of these
-#         exclude: ["parts", ...]  # title must contain none of these
-#         min_price: 1000          # ignore anything cheaper (accessories, scams)
+#   A source can override title_has_any, min_price or query, and add exclude.
+#   Title matching ignores case, spaces and hyphens, so "om-1", "OM1" and
+#   "om 1" are all the same. A word ending in a number won't match a longer
+#   number: "om-1" doesn't match "OM-10", "leica m2" doesn't match "Leica M 28mm".
 #
-#     Title matching ignores case, spaces and hyphens, so "x-t5", "XT5" and
-#     "x t5" are all the same.
-#
-# Tip: test a product URL before adding it:  python -m tracker check <url>
+# Test before adding:
+#   python -m tracker check "ebay:pentax k1000"
+#   python -m tracker check "shop:kmcamera.com pentax k1000"
+#   python -m tracker check <product url>
 
 settings:
   currency: USD
   # Email when a source's price falls at least this much below its last price.
   alert_drop_percent: 3
+  # Titles with any of these are skipped for every camera: broken or partial items.
+  exclude: ["parts", "repair", "as is", "not working", "untested", "not tested", "broken",
+            "no meter", "inoperative", "needs", "mostly works", "wrinkled", "read description",
+            "top cover", "body cap", "lens only", "magazine", "catalog", "price guide", "book"]
 
 cameras:
-  # PLACEHOLDERS - swap these for your own cameras.
-  - name: Sony A7 IV (body)
-    target_price: 2000
+  # Excludes the M6 TTL and the 2022 reissue. Titles saying "non TTL" are dropped too.
+  - name: Leica M6 Classic
+    search: "leica m6"
+    title_has_any: ["leica m6", "leitz m6"]
+    exclude: ["ttl", "2022", "reissue", "6-bit", "for leica"]
+    min_price: 1500
     sources:
-      - label: B&H
-        url: https://www.bhphotovideo.com/c/product/1667800-REG/sony_ilce7m4_b_alpha_a7_iv_mirrorless.html
-      - label: eBay used
-        ebay_query: "sony a7 iv body"
-        condition: used
-        title_has_any: ["a7 iv", "a7iv", "a7m4", "ilce-7m4"]
-        exclude: ["parts", "repair", "battery", "cage", "case", "grip", "strap", "charger", "a7 iii", "a7r", "a7s", "a7c"]
-        min_price: 1000
+      - {label: eBay (used), ebay_query: "leica m6", condition: used}
+      - {label: K&M Camera, shop: kmcamera.com}
+      - {label: Brooklyn Film Camera, shop: brooklynfilmcamera.com}
 
-  - name: Fujifilm X-T5 (body)
-    target_price: 1400
+  # Includes the OM-1n. Excludes the digital OM System OM-1 (and the OM-10 automatically).
+  - name: Olympus OM-1
+    search: "olympus om-1"
+    title_has_any: ["om-1"]
+    exclude: ["om system", "mark ii", "mirrorless", "digital", "for olympus"]
+    min_price: 60
     sources:
-      - label: eBay used
-        ebay_query: "fujifilm x-t5 body"
-        condition: used
-        title_has_any: ["x-t5"]
-        exclude: ["parts", "repair", "battery", "case", "grip", "strap", "charger", "x-t4", "x-t30", "x-t50"]
-        min_price: 800
+      - {label: eBay (used), ebay_query: "olympus om-1", condition: used}
+      - {label: K&M Camera, shop: kmcamera.com}
+      - {label: Brooklyn Film Camera, shop: brooklynfilmcamera.com}
+
+  - name: Leica M3
+    search: "leica m3"
+    title_has_any: ["leica m3", "leitz m3"]
+    exclude: ["for leica"]
+    min_price: 600
+    sources:
+      - {label: eBay (used), ebay_query: "leica m3", condition: used}
+      - {label: K&M Camera, shop: kmcamera.com}
+      - {label: Brooklyn Film Camera, shop: brooklynfilmcamera.com}
+
+  - name: Leica M2
+    search: "leica m2"
+    title_has_any: ["leica m2", "leitz m2"]
+    exclude: ["for leica"]
+    min_price: 600
+    sources:
+      - {label: eBay (used), ebay_query: "leica m2", condition: used}
+      - {label: K&M Camera, shop: kmcamera.com}
+      - {label: Brooklyn Film Camera, shop: brooklynfilmcamera.com}
+
+  # Excludes the IIa, III and IIIa, and Kiev copies.
+  - name: Contax II
+    search: "contax ii"
+    title_has_any: ["contax ii"]
+    exclude: ["contax iia", "contax iii", "kiev", "for contax"]
+    min_price: 100
+    sources:
+      - {label: eBay (used), ebay_query: "contax ii", condition: used}
+      - {label: K&M Camera, shop: kmcamera.com}
+      - {label: Brooklyn Film Camera, shop: brooklynfilmcamera.com}
+
+  # Includes the OM-2n. Excludes the OM-2 S/P (and the OM-20/OM-2000 automatically).
+  - name: Olympus OM-2
+    search: "olympus om-2"
+    title_has_any: ["om-2"]
+    exclude: ["om-2 sp", "om-2s/p", "om-1", "for olympus"]
+    min_price: 60
+    sources:
+      - {label: eBay (used), ebay_query: "olympus om-2", condition: used}
+      - {label: K&M Camera, shop: kmcamera.com}
+      - {label: Brooklyn Film Camera, shop: brooklynfilmcamera.com}
+
+  - name: Nikon FE2
+    search: "nikon fe2"
+    title_has_any: ["nikon fe2"]
+    exclude: ["for nikon"]
+    min_price: 100
+    sources:
+      - {label: eBay (used), ebay_query: "nikon fe2", condition: used}
+      - {label: K&M Camera, shop: kmcamera.com}
+      - {label: Brooklyn Film Camera, shop: brooklynfilmcamera.com}
+
+  # Excludes the FE2 and FE10.
+  - name: Nikon FE
+    search: "nikon fe"
+    title_has_any: ["nikon fe"]
+    exclude: ["fe2", "fe10", "for nikon"]
+    min_price: 60
+    sources:
+      - {label: eBay (used), ebay_query: "nikon fe", condition: used}
+      - {label: K&M Camera, shop: kmcamera.com}
+      - {label: Brooklyn Film Camera, shop: brooklynfilmcamera.com}
+
+  # Excludes the AE-1 Program.
+  - name: Canon AE-1
+    search: "canon ae-1"
+    title_has_any: ["canon ae-1"]
+    exclude: ["program", "for canon"]
+    min_price: 40
+    sources:
+      - {label: eBay (used), ebay_query: "canon ae-1", condition: used}
+      - {label: K&M Camera, shop: kmcamera.com}
+      - {label: Brooklyn Film Camera, shop: brooklynfilmcamera.com}
+
+  # Any SR-T model (101, 102, 201, 202, 303...).
+  - name: Minolta SRT
+    search: "minolta srt"
+    title_has_any: ["minolta srt"]
+    exclude: ["for minolta"]
+    min_price: 30
+    sources:
+      - {label: eBay (used), ebay_query: "minolta srt", condition: used}
+      - {label: K&M Camera, shop: kmcamera.com}
+      - {label: Brooklyn Film Camera, shop: brooklynfilmcamera.com}
+
+  - name: Pentax K1000
+    search: "pentax k1000"
+    title_has_any: ["k1000"]
+    exclude: ["for pentax"]
+    min_price: 40
+    sources:
+      - {label: eBay (used), ebay_query: "pentax k1000", condition: used}
+      - {label: K&M Camera, shop: kmcamera.com}
+      - {label: Brooklyn Film Camera, shop: brooklynfilmcamera.com}

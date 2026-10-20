@@ -9,21 +9,21 @@ from .alerts import Alert, find_alerts
 from .config import Config, Source
 from .fetch import FetchError, fetch, polite_pause
 from .history import History
-from .sources import PriceResult, SourceError
-from .sources import ebay, product_page
+from .sources import OutOfStock, PriceResult, SourceError
+from .sources import ebay, product_page, shopify
 
 # Email about a source after this many failed runs in a row (2 runs/day -> 3 days).
 BROKEN_AFTER = 6
-
-
-class OutOfStock(SourceError):
-    """Page works fine; the item just isn't available. Not a failure."""
 
 
 def check_source(source: Source) -> PriceResult:
     if source.kind == "ebay":
         html = fetch(ebay.search_url(source.ebay_query, source.condition))
         return ebay.extract_lowest(html, source.title_has_any, source.exclude, source.min_price)
+    if source.kind == "shopify":
+        text = fetch(shopify.search_url(source.shop, source.query))
+        return shopify.extract_lowest(text, source.shop, source.title_has_any, source.exclude,
+                                      source.min_price)
     result = product_page.extract_price(fetch(source.url))
     if result.in_stock is False:
         raise OutOfStock(f"out of stock (listed at {result.price:,.2f})")
