@@ -1,0 +1,52 @@
+name: Check camera prices
+
+on:
+  schedule:
+    # Twice a day, times in UTC: 13:17 and 01:17 = ~9:17am / 9:17pm US Eastern.
+    # (Off the hour on purpose; GitHub delays jobs scheduled exactly on :00.)
+    - cron: "17 13 * * *"
+    - cron: "17 1 * * *"
+  workflow_dispatch:   # adds a "Run workflow" button on the Actions tab
+
+permissions:
+  contents: write      # lets the job commit price history back to the repo
+
+concurrency:
+  group: check-prices
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Check prices
+        env:
+          EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
+          EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+        run: python -m tracker run
+
+      - name: Save price history
+        if: always()
+        run: |
+          git config user.name "price-tracker-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then
+            echo "No changes to save"
+          else
+            git commit -m "Price check $(date -u +'%Y-%m-%d %H:%M') UTC"
+            git pull --rebase --quiet
+            git push
+          fi

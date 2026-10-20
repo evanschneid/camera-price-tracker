@@ -1,0 +1,62 @@
+# Cameras to track. Edit this file to add, remove, or change cameras.
+#
+# Each camera has:
+#   name          - anything you like; used in emails and the price history
+#   target_price  - optional; you get an email when any source first hits it
+#   sources       - where to check. Two kinds:
+#
+#     Product page (B&H, Adorama, Best Buy, MPB, KEH, most shops):
+#       - label: B&H
+#         url: https://www.bhphotovideo.com/c/product/...
+#
+#     eBay search (lowest Buy It Now price among matching listings):
+#       - label: eBay used
+#         ebay_query: "sony a7 iv body"
+#         condition: used          # new | used | any
+#         title_has_any: ["a7 iv"] # title must contain at least one of these
+#         exclude: ["parts", ...]  # title must contain none of these
+#         min_price: 1000          # ignore anything cheaper (accessories, scams)
+#
+#     Title matching ignores case, spaces and hyphens, so "x-t5", "XT5" and
+#     "x t5" are all the same.
+#
+# Tip: test a product URL before adding it:  python -m tracker check <url>
+
+settings:
+  currency: USD
+  # Email when a source's price falls at least this much below its last price.
+  alert_drop_percent: 3
+
+cameras:
+  # PLACEHOLDERS - swap these for your own cameras.
+  - name: Sony A7 IV (body)
+    target_price: 2000
+    sources:
+      - label: B&H
+        url: https://www.bhphotovideo.com/c/product/1667800-REG/sony_ilce7m4_b_alpha_a7_iv_mirrorless.html
+      - label: Adorama
+        url: https://www.adorama.com/isoa7m4.html
+      - label: MPB (used)
+        url: https://www.mpb.com/en-us/product/sony-a7-iv
+      - label: KEH (used)
+        url: https://www.keh.com/shop/sony-alpha-a7-iv-mirrorless-camera-body-black.html
+      - label: eBay used
+        ebay_query: "sony a7 iv body"
+        condition: used
+        title_has_any: ["a7 iv", "a7iv", "a7m4", "ilce-7m4"]
+        exclude: ["parts", "repair", "battery", "cage", "case", "grip", "strap", "charger", "a7 iii", "a7r", "a7s", "a7c"]
+        min_price: 1000
+
+  - name: Fujifilm X-T5 (body)
+    target_price: 1400
+    sources:
+      - label: B&H
+        url: https://www.bhphotovideo.com/c/product/1730534-REG/fujifilm_16782301_x_t5_mirrorless_camera_body.html
+      - label: MPB (used)
+        url: https://www.mpb.com/en-us/product/fujifilm-x-t5
+      - label: eBay used
+        ebay_query: "fujifilm x-t5 body"
+        condition: used
+        title_has_any: ["x-t5"]
+        exclude: ["parts", "repair", "battery", "case", "grip", "strap", "charger", "x-t4", "x-t30", "x-t50"]
+        min_price: 800
