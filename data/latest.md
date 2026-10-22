@@ -1,6 +1,6 @@
 # Latest prices
 
-Checked 2026-10-22T06:09:28+00:00 UTC
+Checked 2026-10-22T18:02:20+00:00 UTC
 
 
 ## Leica M6 Classic
@@ -8,7 +8,7 @@ Checked 2026-10-22T06:09:28+00:00 UTC
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | [$2,638.39](https://www.ebay.com/itm/147639929057) | — |
+| eBay (used) | ⚠️ HTTP 403 | |
 | K&M Camera | [$3,999.95](https://kmcamera.com/products/used-leica-m6-classic-chrome-body-used-like-new) | — |
 | Brooklyn Film Camera | nothing matching listed right now (6 results checked) | |
 
@@ -17,7 +17,7 @@ Checked 2026-10-22T06:09:28+00:00 UTC
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | [$61.50](https://www.ebay.com/itm/376753397244) | — |
+| eBay (used) | ⚠️ HTTP 403 | |
 | K&M Camera | [$189.99](https://kmcamera.com/products/useolyom1chr-u9) | — |
 | Brooklyn Film Camera | nothing matching listed right now (7 results checked) | |
 
@@ -26,7 +26,7 @@ Checked 2026-10-22T06:09:28+00:00 UTC
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | [$975.00](https://www.ebay.com/itm/147582336591) | — |
+| eBay (used) | ⚠️ HTTP 403 | |
 | K&M Camera | [$1,599.99](https://kmcamera.com/products/useleim3dschr-u8) | — |
 | Brooklyn Film Camera | [$4,200.00](https://brooklynfilmcamera.com/products/leica-m3-single-stroke-summicron-50mm-f-2-clad) | — |
 
@@ -35,7 +35,7 @@ Checked 2026-10-22T06:09:28+00:00 UTC
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | [$1,420.85](https://www.ebay.com/itm/147442644092) |  |
+| eBay (used) | ⚠️ HTTP 403 | |
 | K&M Camera | nothing matching listed right now (10 results checked) | |
 | Brooklyn Film Camera | [$3,500.00](https://brooklynfilmcamera.com/products/leica-m2-single-stroke-summaron-35mm-f-3-5-clad) | — |
 
@@ -44,7 +44,7 @@ Checked 2026-10-22T06:09:28+00:00 UTC
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
+| eBay (used) | ⚠️ HTTP 403 | |
 | K&M Camera | nothing matching listed right now (10 results checked) | |
 | Brooklyn Film Camera | nothing matching listed right now (9 results checked) | |
 
@@ -53,7 +53,7 @@ Checked 2026-10-22T06:09:28+00:00 UTC
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
+| eBay (used) | ⚠️ HTTP 403 | |
 | K&M Camera | [$269.99](https://kmcamera.com/products/useolyom2chrm-u9) | — |
 | Brooklyn Film Camera | nothing matching listed right now (6 results checked) | |
 
@@ -62,7 +62,7 @@ Checked 2026-10-22T06:09:28+00:00 UTC
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
+| eBay (used) | ⚠️ HTTP 403 | |
 | K&M Camera | [$349.99](https://kmcamera.com/products/usenikfe2blk-u8) | — |
 | Brooklyn Film Camera | [$885.00](https://brooklynfilmcamera.com/products/nikon-fe2) | — |
 
@@ -71,16 +71,16 @@ Checked 2026-10-22T06:09:28+00:00 UTC
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
+| eBay (used) | ⚠️ HTTP 403 | |
 | K&M Camera | [$249.99](https://kmcamera.com/products/usenikfechr-u8) | — |
-| Brooklyn Film Camera | nothing matching listed right now (7 results checked) | |
+| Brooklyn Film Camera | nothing matching listed right now (8 results checked) | |
 
 ## Canon AE-1
 
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
+| eBay (used) | ⚠️ HTTP 403 | |
 | K&M Camera | [$199.99](https://kmcamera.com/products/usecanae1chr-u7) | — |
 | Brooklyn Film Camera | [$375.00](https://brooklynfilmcamera.com/products/canon-ae-2) | — |
 
@@ -89,15 +89,15 @@ Checked 2026-10-22T06:09:28+00:00 UTC
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
+| eBay (used) | ⚠️ HTTP 403 | |
 | K&M Camera | [$249.99](https://kmcamera.com/products/useminsrt303bchr-u7) | — |
-| Brooklyn Film Camera | nothing matching listed right now (8 results checked) | |
+| Brooklyn Film Camera | nothing matching listed right now (6 results checked) | |
 
 ## Pentax K1000
 
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
+| eBay (used) | ⚠️ HTTP 403 | |
 | K&M Camera | [$239.99](https://kmcamera.com/products/usepenk1000chr-u8) | — |
 | Brooklyn Film Camera | [$360.00](https://brooklynfilmcamera.com/products/pentax-k1000) | — |
