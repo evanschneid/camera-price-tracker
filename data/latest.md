@@ -1,6 +1,6 @@
 # Latest prices
 
-Checked 2026-10-24T05:58:26+00:00 UTC
+Checked 2026-10-24T16:40:42+00:00 UTC
 
 
 ## Leica M6 Classic
@@ -8,7 +8,7 @@ Checked 2026-10-24T05:58:26+00:00 UTC
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | [$2,631.34](https://www.ebay.com/itm/147639929057) | -0.1% |
+| eBay (used) | [$2,631.34](https://www.ebay.com/itm/147650160718) | — |
 | K&M Camera | [$3,999.95](https://kmcamera.com/products/used-leica-m6-classic-chrome-body-used-like-new) | — |
 | Brooklyn Film Camera | nothing matching listed right now (6 results checked) | |
 
@@ -73,7 +73,7 @@ Checked 2026-10-24T05:58:26+00:00 UTC
 |---|---|---|
 | eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
 | K&M Camera | [$249.99](https://kmcamera.com/products/usenikfechr-u8) | — |
-| Brooklyn Film Camera | nothing matching listed right now (8 results checked) | |
+| Brooklyn Film Camera | nothing matching listed right now (10 results checked) | |
 
 ## Canon AE-1
 
