@@ -1,6 +1,6 @@
 # Latest prices
 
-Checked 2026-10-25T06:12:49+00:00 UTC
+Checked 2026-10-25T17:05:20+00:00 UTC
 
 
 ## Leica M6 Classic
@@ -89,7 +89,7 @@ Checked 2026-10-25T06:12:49+00:00 UTC
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | ⚠️ HTTP 403 | |
+| eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
 | K&M Camera | [$249.99](https://kmcamera.com/products/useminsrt303bchr-u7) | — |
 | Brooklyn Film Camera | nothing matching listed right now (7 results checked) | |
 
@@ -98,6 +98,6 @@ Checked 2026-10-25T06:12:49+00:00 UTC
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | ⚠️ HTTP 403 | |
+| eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
 | K&M Camera | [$239.99](https://kmcamera.com/products/usepenk1000chr-u8) | — |
 | Brooklyn Film Camera | [$360.00](https://brooklynfilmcamera.com/products/pentax-k1000) | — |
