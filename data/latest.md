@@ -1,6 +1,6 @@
 # Latest prices
 
-Checked 2026-10-24T16:40:42+00:00 UTC
+Checked 2026-10-25T06:12:49+00:00 UTC
 
 
 ## Leica M6 Classic
