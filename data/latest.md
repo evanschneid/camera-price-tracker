@@ -1,6 +1,6 @@
 # Latest prices
 
-Checked 2026-10-26T19:23:14+00:00 UTC
+Checked 2026-10-27T06:21:49+00:00 UTC
 
 
 ## Leica M6 Classic
@@ -8,9 +8,9 @@ Checked 2026-10-26T19:23:14+00:00 UTC
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | [$2,631.34](https://www.ebay.com/itm/147650160718) | — |
+| eBay (used) | [$2,624.76](https://www.ebay.com/itm/147650160718) | -0.3% |
 | K&M Camera | [$3,999.95](https://kmcamera.com/products/used-leica-m6-classic-chrome-body-used-like-new) | — |
-| Brooklyn Film Camera | nothing matching listed right now (7 results checked) | |
+| Brooklyn Film Camera | nothing matching listed right now (8 results checked) | |
 
 ## Olympus OM-1
 
@@ -35,7 +35,7 @@ Checked 2026-10-26T19:23:14+00:00 UTC
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | [$1,418.73](https://www.ebay.com/itm/147442644092) | -0.1% |
+| eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
 | K&M Camera | nothing matching listed right now (10 results checked) | |
 | Brooklyn Film Camera | [$3,500.00](https://brooklynfilmcamera.com/products/leica-m2-single-stroke-summaron-35mm-f-3-5-clad) | — |
 
@@ -46,7 +46,7 @@ Checked 2026-10-26T19:23:14+00:00 UTC
 |---|---|---|
 | eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
 | K&M Camera | nothing matching listed right now (10 results checked) | |
-| Brooklyn Film Camera | nothing matching listed right now (9 results checked) | |
+| Brooklyn Film Camera | nothing matching listed right now (10 results checked) | |
 
 ## Olympus OM-2
 
@@ -90,7 +90,7 @@ Checked 2026-10-26T19:23:14+00:00 UTC
 | Source | Price | Change |
 |---|---|---|
 | eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
-| K&M Camera | [$149.95](https://kmcamera.com/products/useminsrt200-uvg) | -40.0% |
+| K&M Camera | [$149.95](https://kmcamera.com/products/useminsrt200-uvg) | — |
 | Brooklyn Film Camera | nothing matching listed right now (6 results checked) | |
 
 ## Pentax K1000
