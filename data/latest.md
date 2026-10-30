@@ -1,6 +1,6 @@
 # Latest prices
 
-Checked 2026-10-29T18:59:51+00:00 UTC
+Checked 2026-10-30T07:13:59+00:00 UTC
 
 
 ## Leica M6 Classic
@@ -8,7 +8,7 @@ Checked 2026-10-29T18:59:51+00:00 UTC
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | [$1,999.60](https://www.ebay.com/itm/800847661404) | -23.7% |
+| eBay (used) | [$2,626.17](https://www.ebay.com/itm/147650160718) | +31.3% |
 | K&M Camera | [$3,999.95](https://kmcamera.com/products/used-leica-m6-classic-chrome-body-used-like-new) | — |
 | Brooklyn Film Camera | nothing matching listed right now (7 results checked) | |
 
@@ -91,7 +91,7 @@ Checked 2026-10-29T18:59:51+00:00 UTC
 |---|---|---|
 | eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
 | K&M Camera | [$149.95](https://kmcamera.com/products/useminsrt200-uvg) | — |
-| Brooklyn Film Camera | nothing matching listed right now (7 results checked) | |
+| Brooklyn Film Camera | nothing matching listed right now (8 results checked) | |
 
 ## Pentax K1000
 
@@ -99,5 +99,5 @@ Checked 2026-10-29T18:59:51+00:00 UTC
 | Source | Price | Change |
 |---|---|---|
 | eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
-| K&M Camera | [$199.99](https://kmcamera.com/products/usepenk1000chr-u7) | -16.7% |
+| K&M Camera | [$199.99](https://kmcamera.com/products/usepenk1000chr-u7) | — |
 | Brooklyn Film Camera | [$360.00](https://brooklynfilmcamera.com/products/pentax-k1000) | — |
