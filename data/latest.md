@@ -1,6 +1,6 @@
 # Latest prices
 
-Checked 2026-11-02T22:21:53+00:00 UTC
+Checked 2026-11-03T07:58:16+00:00 UTC
 
 
 ## Leica M6 Classic
@@ -8,7 +8,7 @@ Checked 2026-11-02T22:21:53+00:00 UTC
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | [$2,621.47](https://www.ebay.com/itm/147659577684) | — |
+| eBay (used) | [$2,627.81](https://www.ebay.com/itm/147659577684) | +0.2% |
 | K&M Camera | [$3,999.95](https://kmcamera.com/products/used-leica-m6-classic-chrome-body-used-like-new) | — |
 | Brooklyn Film Camera | nothing matching listed right now (9 results checked) | |
 
@@ -17,7 +17,7 @@ Checked 2026-11-02T22:21:53+00:00 UTC
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | [$61.50](https://www.ebay.com/itm/376753397244) | -9.6% |
+| eBay (used) | [$61.50](https://www.ebay.com/itm/376753397244) | — |
 | K&M Camera | [$189.99](https://kmcamera.com/products/useolyom1chr-u9) | — |
 | Brooklyn Film Camera | nothing matching listed right now (8 results checked) | |
 
@@ -26,7 +26,7 @@ Checked 2026-11-02T22:21:53+00:00 UTC
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | [$975.00](https://www.ebay.com/itm/147582336591) | +21.3% |
+| eBay (used) | [$975.00](https://www.ebay.com/itm/147582336591) | — |
 | K&M Camera | [$1,599.99](https://kmcamera.com/products/useleim3dschr-u8) | — |
 | Brooklyn Film Camera | [$4,200.00](https://brooklynfilmcamera.com/products/leica-m3-single-stroke-summicron-50mm-f-2-clad) | — |
 
@@ -35,7 +35,7 @@ Checked 2026-11-02T22:21:53+00:00 UTC
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
+| eBay (used) | [$1,422.12](https://www.ebay.com/itm/147442644092) | +0.2% |
 | K&M Camera | nothing matching listed right now (10 results checked) | |
 | Brooklyn Film Camera | [$3,500.00](https://brooklynfilmcamera.com/products/leica-m2-single-stroke-summaron-35mm-f-3-5-clad) | — |
 
@@ -44,7 +44,7 @@ Checked 2026-11-02T22:21:53+00:00 UTC
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
+| eBay (used) | [$315.90](https://www.ebay.com/itm/366347302099) |  |
 | K&M Camera | nothing matching listed right now (10 results checked) | |
 | Brooklyn Film Camera | nothing matching listed right now (10 results checked) | |
 
