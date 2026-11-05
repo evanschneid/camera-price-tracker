@@ -1,6 +1,6 @@
 # Latest prices
 
-Checked 2026-11-05T07:56:35+00:00 UTC
+Checked 2026-11-05T20:42:15+00:00 UTC
 
 
 ## Leica M6 Classic
@@ -8,9 +8,9 @@ Checked 2026-11-05T07:56:35+00:00 UTC
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | [$2,637.45](https://www.ebay.com/itm/147659577684) | +0.3% |
+| eBay (used) | [$3,012.08](https://www.ebay.com/itm/307254015497) | +14.2% |
 | K&M Camera | [$3,999.95](https://kmcamera.com/products/used-leica-m6-classic-chrome-body-used-like-new) | — |
-| Brooklyn Film Camera | nothing matching listed right now (8 results checked) | |
+| Brooklyn Film Camera | nothing matching listed right now (7 results checked) | |
 
 ## Olympus OM-1
 
@@ -28,7 +28,7 @@ Checked 2026-11-05T07:56:35+00:00 UTC
 |---|---|---|
 | eBay (used) | [$975.00](https://www.ebay.com/itm/147582336591) | — |
 | K&M Camera | [$1,599.99](https://kmcamera.com/products/useleim3dschr-u8) | — |
-| Brooklyn Film Camera | [$4,200.00](https://brooklynfilmcamera.com/products/leica-m3-single-stroke-summicron-50mm-f-2-clad) | — |
+| Brooklyn Film Camera | nothing matching listed right now (8 results checked) | |
 
 ## Leica M2
 
