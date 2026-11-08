@@ -1,6 +1,6 @@
 # Latest prices
 
-Checked 2026-11-07T18:04:42+00:00 UTC
+Checked 2026-11-08T07:26:51+00:00 UTC
 
 
 ## Leica M6 Classic
@@ -71,7 +71,7 @@ Checked 2026-11-07T18:04:42+00:00 UTC
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
+| eBay (used) | ⚠️ HTTP 403 | |
 | K&M Camera | [$249.99](https://kmcamera.com/products/usenikfechr-u8) | — |
 | Brooklyn Film Camera | nothing matching listed right now (5 results checked) | |
 
@@ -80,7 +80,7 @@ Checked 2026-11-07T18:04:42+00:00 UTC
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
+| eBay (used) | ⚠️ HTTP 403 | |
 | K&M Camera | [$199.99](https://kmcamera.com/products/usecanae1chr-u7) | — |
 | Brooklyn Film Camera | [$375.00](https://brooklynfilmcamera.com/products/canon-ae-2) | — |
 
@@ -89,7 +89,7 @@ Checked 2026-11-07T18:04:42+00:00 UTC
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
+| eBay (used) | ⚠️ HTTP 403 | |
 | K&M Camera | [$149.95](https://kmcamera.com/products/useminsrt200-uvg) | — |
 | Brooklyn Film Camera | nothing matching listed right now (4 results checked) | |
 
@@ -98,6 +98,6 @@ Checked 2026-11-07T18:04:42+00:00 UTC
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
+| eBay (used) | ⚠️ HTTP 403 | |
 | K&M Camera | [$199.99](https://kmcamera.com/products/usepenk1000chr-u7) | — |
 | Brooklyn Film Camera | [$360.00](https://brooklynfilmcamera.com/products/pentax-k1000) | — |
