@@ -1,6 +1,6 @@
 # Latest prices
 
-Checked 2026-11-13T20:31:35+00:00 UTC
+Checked 2026-11-14T07:38:35+00:00 UTC
 
 
 ## Leica M6 Classic
@@ -8,7 +8,7 @@ Checked 2026-11-13T20:31:35+00:00 UTC
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | [$2,596.80](https://www.ebay.com/itm/147670626577) | -0.3% |
+| eBay (used) | [$2,362.28](https://www.ebay.com/itm/940089764186) | -9.0% |
 | K&M Camera | [$3,299.99](https://kmcamera.com/products/useleim6ranchr-u9) | — |
 | Brooklyn Film Camera | nothing matching listed right now (8 results checked) | |
 
@@ -17,16 +17,16 @@ Checked 2026-11-13T20:31:35+00:00 UTC
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
+| eBay (used) | [$61.50](https://www.ebay.com/itm/376753397244) | — |
 | K&M Camera | [$189.99](https://kmcamera.com/products/useolyom1chr-u9) | — |
-| Brooklyn Film Camera | nothing matching listed right now (7 results checked) | |
+| Brooklyn Film Camera | nothing matching listed right now (8 results checked) | |
 
 ## Leica M3
 
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
+| eBay (used) | [$975.00](https://www.ebay.com/itm/147582336591) | — |
 | K&M Camera | [$1,599.99](https://kmcamera.com/products/useleim3dschr-u8) | — |
 | Brooklyn Film Camera | [$4,000.00](https://brooklynfilmcamera.com/products/leica-m3-single-stroke-summicron-50mm-f-2-clad) | — |
 
@@ -55,7 +55,7 @@ Checked 2026-11-13T20:31:35+00:00 UTC
 |---|---|---|
 | eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
 | K&M Camera | [$269.99](https://kmcamera.com/products/useolyom2chrm-u9) | — |
-| Brooklyn Film Camera | nothing matching listed right now (5 results checked) | |
+| Brooklyn Film Camera | nothing matching listed right now (6 results checked) | |
 
 ## Nikon FE2
 
