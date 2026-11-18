@@ -1,6 +1,6 @@
 # Latest prices
 
-Checked 2026-11-18T08:36:02+00:00 UTC
+Checked 2026-11-18T21:27:38+00:00 UTC
 
 
 ## Leica M6 Classic
@@ -10,7 +10,7 @@ Checked 2026-11-18T08:36:02+00:00 UTC
 |---|---|---|
 | eBay (used) | [$2,583.42](https://www.ebay.com/itm/147684487847) | — |
 | K&M Camera | [$3,299.99](https://kmcamera.com/products/useleim6ranchr-u9) | — |
-| Brooklyn Film Camera | nothing matching listed right now (8 results checked) | |
+| Brooklyn Film Camera | nothing matching listed right now (9 results checked) | |
 
 ## Olympus OM-1
 
@@ -27,7 +27,7 @@ Checked 2026-11-18T08:36:02+00:00 UTC
 | Source | Price | Change |
 |---|---|---|
 | eBay (used) | [$975.00](https://www.ebay.com/itm/147582336591) | — |
-| K&M Camera | [$1,599.99](https://kmcamera.com/products/useleim3dschr-u8) | — |
+| K&M Camera | nothing matching listed right now (10 results checked) | |
 | Brooklyn Film Camera | [$4,000.00](https://brooklynfilmcamera.com/products/leica-m3-single-stroke-summicron-50mm-f-2-clad) | — |
 
 ## Leica M2
@@ -36,7 +36,7 @@ Checked 2026-11-18T08:36:02+00:00 UTC
 | Source | Price | Change |
 |---|---|---|
 | eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
-| K&M Camera | nothing matching listed right now (10 results checked) | |
+| K&M Camera | nothing matching listed right now (6 results checked) | |
 | Brooklyn Film Camera | [$3,300.00](https://brooklynfilmcamera.com/products/leica-m2-single-stroke-summaron-35mm-f-3-5-clad) | — |
 
 ## Contax II
@@ -46,15 +46,15 @@ Checked 2026-11-18T08:36:02+00:00 UTC
 |---|---|---|
 | eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
 | K&M Camera | nothing matching listed right now (10 results checked) | |
-| Brooklyn Film Camera | nothing matching listed right now (7 results checked) | |
+| Brooklyn Film Camera | nothing matching listed right now (6 results checked) | |
 
 ## Olympus OM-2
 
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | [$74.99](https://www.ebay.com/itm/377294937204) | — |
-| K&M Camera | [$269.99](https://kmcamera.com/products/useolyom2chrm-u9) | — |
+| eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
+| K&M Camera | nothing matching listed right now (10 results checked) | |
 | Brooklyn Film Camera | nothing matching listed right now (8 results checked) | |
 
 ## Nikon FE2
@@ -71,7 +71,7 @@ Checked 2026-11-18T08:36:02+00:00 UTC
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | [$74.99](https://www.ebay.com/itm/318920381978) | — |
+| eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
 | K&M Camera | [$249.99](https://kmcamera.com/products/usenikfechr-u8) | — |
 | Brooklyn Film Camera | nothing matching listed right now (10 results checked) | |
 
@@ -90,7 +90,7 @@ Checked 2026-11-18T08:36:02+00:00 UTC
 | Source | Price | Change |
 |---|---|---|
 | eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
-| K&M Camera | [$149.95](https://kmcamera.com/products/useminsrt200-uvg) | — |
+| K&M Camera | nothing matching listed right now (10 results checked) | |
 | Brooklyn Film Camera | nothing matching listed right now (6 results checked) | |
 
 ## Pentax K1000
