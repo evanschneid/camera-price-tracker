@@ -1,6 +1,6 @@
 # Latest prices
 
-Checked 2026-11-19T08:51:34+00:00 UTC
+Checked 2026-11-19T21:39:04+00:00 UTC
 
 
 ## Leica M6 Classic
@@ -8,7 +8,7 @@ Checked 2026-11-19T08:51:34+00:00 UTC
 
 | Source | Price | Change |
 |---|---|---|
-| eBay (used) | [$2,578.01](https://www.ebay.com/itm/147684487847) | -0.2% |
+| eBay (used) | [$2,578.01](https://www.ebay.com/itm/147684487847) | — |
 | K&M Camera | [$3,299.99](https://kmcamera.com/products/useleim6ranchr-u9) | — |
 | Brooklyn Film Camera | nothing matching listed right now (10 results checked) | |
 
@@ -82,7 +82,7 @@ Checked 2026-11-19T08:51:34+00:00 UTC
 |---|---|---|
 | eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
 | K&M Camera | [$199.99](https://kmcamera.com/products/usecanae1chr-u7) | — |
-| Brooklyn Film Camera | [$375.00](https://brooklynfilmcamera.com/products/canon-ae-2) | — |
+| Brooklyn Film Camera | nothing matching listed right now (7 results checked) | |
 
 ## Minolta SRT
 
