@@ -1,6 +1,6 @@
 # Latest prices
 
-Checked 2026-11-26T09:37:36+00:00 UTC
+Checked 2026-11-26T22:24:07+00:00 UTC
 
 
 ## Leica M6 Classic
@@ -36,7 +36,7 @@ Checked 2026-11-26T09:37:36+00:00 UTC
 | Source | Price | Change |
 |---|---|---|
 | eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
-| K&M Camera | nothing matching listed right now (6 results checked) | |
+| K&M Camera | nothing matching listed right now (5 results checked) | |
 | Brooklyn Film Camera | [$3,300.00](https://brooklynfilmcamera.com/products/leica-m2-single-stroke-summaron-35mm-f-3-5-clad) | — |
 
 ## Contax II
