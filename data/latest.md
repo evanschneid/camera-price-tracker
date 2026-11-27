@@ -1,6 +1,6 @@
 # Latest prices
 
-Checked 2026-11-27T09:43:03+00:00 UTC
+Checked 2026-11-27T22:04:36+00:00 UTC
 
 
 ## Leica M6 Classic
@@ -10,7 +10,7 @@ Checked 2026-11-27T09:43:03+00:00 UTC
 |---|---|---|
 | eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
 | K&M Camera | [$3,299.99](https://kmcamera.com/products/useleim6ranchr-u9) | — |
-| Brooklyn Film Camera | nothing matching listed right now (9 results checked) | |
+| Brooklyn Film Camera | nothing matching listed right now (10 results checked) | |
 
 ## Olympus OM-1
 
@@ -55,7 +55,7 @@ Checked 2026-11-27T09:43:03+00:00 UTC
 |---|---|---|
 | eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
 | K&M Camera | nothing matching listed right now (10 results checked) | |
-| Brooklyn Film Camera | nothing matching listed right now (9 results checked) | |
+| Brooklyn Film Camera | nothing matching listed right now (8 results checked) | |
 
 ## Nikon FE2
 
@@ -64,7 +64,7 @@ Checked 2026-11-27T09:43:03+00:00 UTC
 |---|---|---|
 | eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
 | K&M Camera | nothing matching listed right now (10 results checked) | |
-| Brooklyn Film Camera | nothing matching listed right now (3 results checked) | |
+| Brooklyn Film Camera | [$885.00](https://brooklynfilmcamera.com/products/nikon-fe2) | — |
 
 ## Nikon FE
 
@@ -91,7 +91,7 @@ Checked 2026-11-27T09:43:03+00:00 UTC
 |---|---|---|
 | eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
 | K&M Camera | nothing matching listed right now (10 results checked) | |
-| Brooklyn Film Camera | nothing matching listed right now (9 results checked) | |
+| Brooklyn Film Camera | nothing matching listed right now (8 results checked) | |
 
 ## Pentax K1000
 
