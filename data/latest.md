@@ -1,6 +1,6 @@
 # Latest prices
 
-Checked 2026-11-27T22:04:36+00:00 UTC
+Checked 2026-11-28T08:56:38+00:00 UTC
 
 
 ## Leica M6 Classic
@@ -10,7 +10,7 @@ Checked 2026-11-27T22:04:36+00:00 UTC
 |---|---|---|
 | eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
 | K&M Camera | [$3,299.99](https://kmcamera.com/products/useleim6ranchr-u9) | — |
-| Brooklyn Film Camera | nothing matching listed right now (10 results checked) | |
+| Brooklyn Film Camera | nothing matching listed right now (9 results checked) | |
 
 ## Olympus OM-1
 
@@ -28,7 +28,7 @@ Checked 2026-11-27T22:04:36+00:00 UTC
 |---|---|---|
 | eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
 | K&M Camera | nothing matching listed right now (10 results checked) | |
-| Brooklyn Film Camera | nothing matching listed right now (7 results checked) | |
+| Brooklyn Film Camera | nothing matching listed right now (6 results checked) | |
 
 ## Leica M2
 
@@ -37,7 +37,7 @@ Checked 2026-11-27T22:04:36+00:00 UTC
 |---|---|---|
 | eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
 | K&M Camera | nothing matching listed right now (5 results checked) | |
-| Brooklyn Film Camera | [$3,300.00](https://brooklynfilmcamera.com/products/leica-m2-single-stroke-summaron-35mm-f-3-5-clad) | — |
+| Brooklyn Film Camera | [$3,700.00](https://brooklynfilmcamera.com/products/leica-m2-single-stroke-summaron-35mm-f-2-8-clad-cream-leather) | +12.1% |
 
 ## Contax II
 
@@ -91,7 +91,7 @@ Checked 2026-11-27T22:04:36+00:00 UTC
 |---|---|---|
 | eBay (used) | ⚠️ no eBay listings found (blocked or page layout changed) | |
 | K&M Camera | nothing matching listed right now (10 results checked) | |
-| Brooklyn Film Camera | nothing matching listed right now (8 results checked) | |
+| Brooklyn Film Camera | nothing matching listed right now (7 results checked) | |
 
 ## Pentax K1000
 
